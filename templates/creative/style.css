@@ -1,0 +1,308 @@
+/*
+ * Creative Developer Portfolio Template
+ * تصميم داكن مع ألوان نيون وتأثيرات glassmorphism
+ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', 'Cairo', sans-serif;
+    background: #0a0e17;
+    color: #ccd6f6;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+.creative-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Particles */
+.bg-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #00ff88;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFloat 4s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% { opacity: 0; transform: translateY(0); }
+    50% { opacity: 0.6; transform: translateY(-30px); }
+}
+
+/* Hero */
+.creative-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+}
+
+.creative-hero::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,255,136,0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.terminal-badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background: rgba(0,255,136,0.08);
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: #00ff88;
+    margin-bottom: 2rem;
+}
+
+.glitch-text {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #e6f1ff;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #00ff88;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-family: 'Fira Code', monospace;
+}
+
+.hero-desc {
+    font-size: 0.95rem;
+    color: #8892b0;
+    max-width: 550px;
+    margin: 0 auto 2rem;
+}
+
+.hero-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.neon-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: rgba(0,255,136,0.05);
+    border: 1px solid rgba(0,255,136,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00ff88;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.neon-link:hover {
+    background: rgba(0,255,136,0.15);
+    border-color: #00ff88;
+    box-shadow: 0 0 20px rgba(0,255,136,0.2);
+    transform: translateY(-3px);
+}
+
+/* Neon Text */
+.neon-text {
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0,255,136,0.3);
+    font-family: 'Fira Code', monospace;
+}
+
+/* Sections */
+.creative-section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e6f1ff;
+    margin-bottom: 2.5rem;
+}
+
+/* Skills */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skill-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(0,255,136,0.04);
+    border: 1px solid rgba(0,255,136,0.12);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.skill-chip:hover {
+    background: rgba(0,255,136,0.1);
+    border-color: rgba(0,255,136,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,255,136,0.1);
+}
+
+.chip-name {
+    font-weight: 600;
+    color: #ccd6f6;
+    font-size: 0.9rem;
+}
+
+.chip-level {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: #00ff88;
+    background: rgba(0,255,136,0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+/* Projects */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.project-glass-card {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.project-glass-card:hover {
+    border-color: rgba(0,255,136,0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.card-glow {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(0,255,136,0.04) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.project-glass-card h3 {
+    font-size: 1.15rem;
+    color: #e6f1ff;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.project-glass-card p {
+    font-size: 0.85rem;
+    color: #8892b0;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    position: relative;
+}
+
+.card-links {
+    display: flex;
+    gap: 1rem;
+    position: relative;
+}
+
+.neon-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.5rem 1.2rem;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.3);
+    border-radius: 8px;
+    color: #00ff88;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.neon-btn:hover {
+    background: rgba(0,255,136,0.2);
+    box-shadow: 0 0 15px rgba(0,255,136,0.2);
+}
+
+.neon-btn.ghost {
+    background: transparent;
+    border-color: rgba(204,214,246,0.15);
+    color: #ccd6f6;
+}
+
+.neon-btn.ghost:hover {
+    border-color: rgba(204,214,246,0.3);
+    background: rgba(255,255,255,0.03);
+}
+
+.neon-btn.large {
+    padding: 0.9rem 2.5rem;
+    font-size: 0.95rem;
+    border-radius: 12px;
+}
+
+/* Footer */
+.creative-footer {
+    text-align: center;
+    padding: 2rem;
+    color: #4a5568;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    z-index: 1;
+}
+
+.creative-footer a {
+    color: #00ff88;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .glitch-text { font-size: 2.2rem; }
+    .projects-container { grid-template-columns: 1fr; }
+}

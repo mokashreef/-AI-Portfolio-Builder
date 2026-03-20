@@ -1,0 +1,288 @@
+/*
+ * Professional Corporate Portfolio Template
+ * تصميم فاخر بألوان Navy + Gold
+ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', 'Cairo', sans-serif;
+    background: #f8f6f0;
+    color: #1a1a2e;
+    line-height: 1.8;
+}
+
+.pro-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Gold line decorations */
+.gold-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #d4af37, #f0d060);
+    margin: 0 auto;
+}
+
+/* Header */
+.pro-header {
+    background: linear-gradient(135deg, #0a0a23 0%, #16213e 50%, #1a1a2e 100%);
+    color: #f0e6d2;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.pro-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.pro-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.header-content {
+    margin-bottom: 2rem;
+}
+
+.header-content h1 {
+    font-family: 'Playfair Display', 'Cairo', serif;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 1.5rem 0;
+    letter-spacing: 1px;
+    color: #f0e6d2;
+}
+
+.title-text {
+    font-size: 1.1rem;
+    color: #d4af37;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.bio-text {
+    color: #a0a0b8;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 0.95rem;
+}
+
+.header-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.header-links a {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d4af37;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.header-links a:hover {
+    background: rgba(212,175,55,0.15);
+    border-color: #d4af37;
+    transform: translateY(-3px);
+}
+
+/* Sections */
+.pro-section {
+    padding: 4rem 0;
+}
+
+.pro-section-dark {
+    background: linear-gradient(135deg, #0a0a23, #16213e);
+}
+
+.pro-heading {
+    font-family: 'Playfair Display', 'Cairo', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #1a1a2e;
+    position: relative;
+}
+
+.pro-heading::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #d4af37, #f0d060);
+    margin: 0.6rem auto 0;
+}
+
+.gold-text {
+    color: #d4af37;
+}
+
+/* Skills */
+.pro-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.pro-skill {
+    background: white;
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    border-right: 3px solid #d4af37;
+}
+
+.pro-skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.pro-skill-bar {
+    height: 4px;
+    background: #e8e4da;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.pro-skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #d4af37, #f0d060);
+    border-radius: 2px;
+    transition: width 1s ease;
+}
+
+/* Projects */
+.pro-projects {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.pro-project-card {
+    display: flex;
+    gap: 2rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,175,55,0.12);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.pro-project-card:hover {
+    border-color: rgba(212,175,55,0.3);
+    background: rgba(255,255,255,0.06);
+    transform: translateX(-5px);
+}
+
+.project-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba(212,175,55,0.2);
+    min-width: 60px;
+}
+
+.project-content h3 {
+    font-family: 'Playfair Display', 'Cairo', serif;
+    font-size: 1.2rem;
+    color: #f0e6d2;
+    margin-bottom: 0.5rem;
+}
+
+.project-content p {
+    color: #8892b0;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.project-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.pro-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, #d4af37, #f0d060);
+    color: #0a0a23;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pro-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+}
+
+.pro-btn.outline {
+    background: transparent;
+    border: 1px solid rgba(212,175,55,0.3);
+    color: #d4af37;
+}
+
+.pro-btn.outline:hover {
+    background: rgba(212,175,55,0.1);
+}
+
+.pro-btn.large {
+    padding: 0.9rem 2.5rem;
+    font-size: 0.95rem;
+    border-radius: 8px;
+}
+
+/* Footer */
+.pro-footer {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+    font-size: 0.8rem;
+    background: #f8f6f0;
+}
+
+.pro-footer a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content h1 { font-size: 2rem; }
+    .pro-skills-grid { grid-template-columns: 1fr; }
+    .pro-project-card { flex-direction: column; gap: 1rem; }
+    .project-number { font-size: 1.5rem; }
+}
