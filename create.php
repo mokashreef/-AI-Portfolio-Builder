@@ -4,15 +4,12 @@ $extraCSS = 'create.css';
 $extraJS = 'form-wizard.js';
 require_once 'includes/header.php';
 ?>
-
 <section class="create-page section">
     <div class="container">
-        <!-- Page Title -->
         <div style="text-align: center; margin-bottom: var(--space-2xl);">
             <h1 style="font-size: 2rem;">أنشئ <span class="text-gradient">Portfolio</span> الخاص بك</h1>
             <p style="color: var(--text-secondary);">املأ بياناتك وشاهد النتيجة لحظيًا</p>
         </div>
-
         <div class="wizard-progress" id="wizardProgress">
             <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
             <div class="progress-step active" data-step="1" onclick="goToStep(1)">
@@ -41,7 +38,6 @@ require_once 'includes/header.php';
                             <h2>👤 المعلومات الشخصية</h2>
                             <p>أخبرنا عن نفسك ومجالك</p>
                         </div>
-
                         <div class="form-group">
                             <label class="form-label" for="fullName">الاسم الكامل *</label>
                             <input type="text" id="fullName" class="form-input" placeholder="مثال: أحمد محمد" required>
@@ -77,7 +73,6 @@ require_once 'includes/header.php';
                         </div>
 
                         <div class="dynamic-list" id="skillsList">
-                            <!-- Skills will be added dynamically -->
                         </div>
 
                         <button class="add-item-btn" onclick="addSkill()">
@@ -95,7 +90,6 @@ require_once 'includes/header.php';
                         </div>
                     </div>
 
-                    <!-- Step 3: Projects -->
                     <div class="form-step" id="step3">
                         <div class="step-header">
                             <h2>🚀 المشاريع</h2>
@@ -103,7 +97,6 @@ require_once 'includes/header.php';
                         </div>
 
                         <div class="dynamic-list" id="projectsList">
-                            <!-- Projects will be added dynamically -->
                         </div>
 
                         <button class="add-item-btn" onclick="addProject()">
@@ -120,8 +113,6 @@ require_once 'includes/header.php';
                             </button>
                         </div>
                     </div>
-
-                    <!-- Step 4: Links & Template -->
                     <div class="form-step" id="step4">
                         <div class="step-header">
                             <h2>🔗 الروابط واختيار القالب</h2>
@@ -155,8 +146,6 @@ require_once 'includes/header.php';
                             </label>
                             <input type="url" id="website" class="form-input" placeholder="https://mywebsite.com">
                         </div>
-
-                        <!-- Template Picker -->
                         <div class="form-group">
                             <label class="form-label" style="font-size: 1rem; color: var(--text-primary); margin-bottom: var(--space-md);">
                                 🎨 اختر القالب
@@ -209,8 +198,6 @@ require_once 'includes/header.php';
                     </div>
                 </div>
             </div>
-
-            <!-- ─── Right: Live Preview ─── -->
             <div class="preview-panel">
                 <div class="preview-header">
                     <h3>
