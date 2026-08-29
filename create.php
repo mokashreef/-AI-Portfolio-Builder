@@ -13,7 +13,6 @@ require_once 'includes/header.php';
             <p style="color: var(--text-secondary);">املأ بياناتك وشاهد النتيجة لحظيًا</p>
         </div>
 
-        <!-- Progress Bar -->
         <div class="wizard-progress" id="wizardProgress">
             <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
             <div class="progress-step active" data-step="1" onclick="goToStep(1)">
@@ -35,10 +34,8 @@ require_once 'includes/header.php';
         </div>
 
         <div class="create-layout">
-            <!-- ─── Left: Form ─── -->
             <div class="form-section">
                 <div class="card">
-                    <!-- Step 1: Personal Info -->
                     <div class="form-step active" id="step1">
                         <div class="step-header">
                             <h2>👤 المعلومات الشخصية</h2>
@@ -73,7 +70,6 @@ require_once 'includes/header.php';
                         </div>
                     </div>
 
-                    <!-- Step 2: Skills -->
                     <div class="form-step" id="step2">
                         <div class="step-header">
                             <h2>🛠️ المهارات</h2>
