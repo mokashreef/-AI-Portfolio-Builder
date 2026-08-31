@@ -1,22 +1,13 @@
-/**
- * AI Portfolio Builder - Form Wizard Controller
- * التحكم بالنموذج متعدد الخطوات + المعاينة الحية
- */
-
 let currentStep = 1;
 const totalSteps = 4;
 let selectedTemplate = 'modern';
 
-// ─── Step Navigation ───
-
 function goToStep(step) {
     if (step < 1 || step > totalSteps) return;
 
-    // Hide all steps
     document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
     document.getElementById('step' + step).classList.add('active');
 
-    // Update progress
     document.querySelectorAll('.progress-step').forEach(s => {
         const sNum = parseInt(s.dataset.step);
         s.classList.remove('active', 'completed');
@@ -24,7 +15,6 @@ function goToStep(step) {
         else if (sNum < step) s.classList.add('completed');
     });
 
-    // Update progress bar fill
     const fillPercent = ((step - 1) / (totalSteps - 1)) * 70;
     document.getElementById('progressFill').style.width = fillPercent + '%';
 
@@ -36,7 +26,7 @@ function nextStep() {
     if (currentStep === 1) {
         const name = document.getElementById('fullName').value.trim();
         if (!name) {
-            alert('يرجى إدخال الاسم الكامل');
+            alert('يرجى إدخال أسمك الكامل ');
             return;
         }
     }
@@ -47,7 +37,6 @@ function prevStep() {
     goToStep(currentStep - 1);
 }
 
-// ─── Skills Management ───
 
 let skillCounter = 0;
 
@@ -66,7 +55,7 @@ function addSkill(name = '', level = 80) {
                            value="${name}" oninput="updatePreview()">
                 </div>
                 <div class="form-group" style="margin-bottom: 0;">
-                    <label class="form-label">المستوى</label>
+                    <label class="form-label">مستوى المهارة</label>
                     <div class="range-wrapper">
                         <input type="range" class="skill-level" min="10" max="100" value="${level}"
                                oninput="this.parentElement.querySelector('.range-value').textContent = this.value + '%'; updatePreview()">
@@ -89,7 +78,6 @@ function removeSkill(id) {
     }
 }
 
-// ─── Projects Management ───
 
 let projectCounter = 0;
 
@@ -138,8 +126,6 @@ function removeProject(id) {
     }
 }
 
-// ─── Template Selection ───
-
 function selectTemplate(template) {
     selectedTemplate = template;
     document.querySelectorAll('.template-option').forEach(t => t.classList.remove('selected'));
@@ -150,8 +136,6 @@ function selectTemplate(template) {
     }
     updatePreview();
 }
-
-// ─── Collect Form Data ───
 
 function collectData() {
     const skills = [];
@@ -185,14 +169,12 @@ function collectData() {
     };
 }
 
-// ─── Live Preview ───
 
 function updatePreview() {
     const data = collectData();
     const preview = document.getElementById('previewContent');
     const urlBar = document.getElementById('previewUrl');
 
-    // Update URL bar
     const slug = data.full_name ? data.full_name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') : 'your-name';
     urlBar.textContent = `portfolio-builder.com/${slug}`;
 
@@ -205,7 +187,6 @@ function updatePreview() {
         return;
     }
 
-    // Skills HTML
     let skillsHTML = '';
     if (data.skills.length > 0) {
         skillsHTML = `
@@ -215,7 +196,6 @@ function updatePreview() {
             </div>`;
     }
 
-    // Projects HTML
     let projectsHTML = '';
     if (data.projects.length > 0) {
         projectsHTML = `
@@ -229,7 +209,6 @@ function updatePreview() {
             </div>`;
     }
 
-    // Links HTML
     let linksHTML = '';
     const links = [];
     if (data.github)   links.push('<span class="preview-link-icon"><i class="fab fa-github"></i></span>');
@@ -258,8 +237,6 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-// ─── Save Portfolio ───
-
 async function savePortfolio() {
     const data = collectData();
 
@@ -284,14 +261,13 @@ async function savePortfolio() {
         const result = await response.json();
 
         if (result.success) {
-            // Show success message and redirect
             alert('🎉 ' + result.message);
             window.location.href = 'portfolio.php?slug=' + result.slug;
         } else {
             alert('❌ ' + result.message);
         }
     } catch (error) {
-        alert('❌ حدث خطأ في الاتصال بالسيرفر');
+        alert(' نعتذر ❌ حدث خطأ في الاتصال بالسيرفر');
         console.error(error);
     } finally {
         saveBtn.innerHTML = originalHTML;
@@ -299,15 +275,11 @@ async function savePortfolio() {
     }
 }
 
-// ─── Initialize ───
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Add initial skill and project
     addSkill('HTML/CSS', 90);
     addSkill('JavaScript', 85);
-    addProject('مشروع تجريبي', 'وصف مختصر للمشروع التجريبي', '', '');
-
-    // Listen for input changes to update preview
+    addProject(' مشروعك ', 'وصف مختصر لمشروعك', '', '');
     document.querySelectorAll('#fullName, #jobTitle, #bio, #emailContact, #github, #linkedin, #twitter, #website').forEach(input => {
         input.addEventListener('input', updatePreview);
     });
