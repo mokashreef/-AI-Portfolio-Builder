@@ -1,10 +1,5 @@
-/**
- * AI Portfolio Builder - Main JavaScript
- */
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ─── Navbar Scroll Effect ───
     const navbar = document.getElementById('navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
@@ -12,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ─── Scroll Animations (Intersection Observer) ───
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -32,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animateOnScroll.observe(el);
     });
 
-    // ─── Smooth Scroll for Anchor Links ───
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const target = document.querySelector(this.getAttribute('href'));
@@ -43,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ─── Auto-dismiss Flash Messages ───
     document.querySelectorAll('.flash').forEach(flash => {
         setTimeout(() => {
             flash.style.opacity = '0';
@@ -52,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     });
 
-    // ─── Typing Effect Utility ───
     window.typeWriter = function(element, text, speed = 50) {
         let i = 0;
         element.textContent = '';
@@ -66,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     };
 
-    // ─── Counter Animation ───
     window.animateCounter = function(element, target, duration = 2000) {
         let start = 0;
         const increment = target / (duration / 16);
