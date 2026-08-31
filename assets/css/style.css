@@ -1,20 +1,9 @@
-/*
- * ============================================
- * AI Portfolio Builder - Main Stylesheet
- * Design System + Global Styles
- * ============================================
- */
-
-/* ─── Google Fonts ─── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700&display=swap');
-
-/* ─── CSS Variables (Design Tokens) ─── */
 :root {
-    /* Colors */
     --primary: #6C63FF;
-    --primary-dark: #5A52D5;
+    --primary-dark: #5A52D4;
     --primary-light: #8B83FF;
-    --primary-glow: rgba(108, 99, 255, 0.3);
+    --primary-glow: rgba(108, 99, 254, 0.3);
 
     --secondary: #FF6B9D;
     --secondary-dark: #E55A8A;
@@ -44,11 +33,9 @@
     --gradient-card: linear-gradient(145deg, rgba(26,31,58,0.8) 0%, rgba(18,22,43,0.6) 100%);
     --gradient-accent: linear-gradient(135deg, #00D4AA 0%, #6C63FF 100%);
 
-    /* Typography */
     --font-primary: 'Inter', 'Cairo', sans-serif;
     --font-display: 'Outfit', 'Cairo', sans-serif;
 
-    /* Spacing */
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
     --space-md: 1rem;
@@ -58,27 +45,23 @@
     --space-3xl: 4rem;
     --space-4xl: 6rem;
 
-    /* Border Radius */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
     --radius-full: 50%;
 
-    /* Shadows */
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
     --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.4);
     --shadow-glow: 0 0 30px var(--primary-glow);
 
-    /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
     --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* ─── Reset & Base ─── */
 *,
 *::before,
 *::after {
@@ -125,7 +108,6 @@ button, input, textarea, select {
     background: none;
 }
 
-/* ─── Typography ─── */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 700;
@@ -139,7 +121,6 @@ h1, h2, h3, h4, h5, h6 {
     background-clip: text;
 }
 
-/* ─── Container ─── */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -147,7 +128,6 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 var(--space-xl);
 }
 
-/* ─── Buttons ─── */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -232,7 +212,6 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-2px);
 }
 
-/* ─── Form Elements ─── */
 .form-group {
     margin-bottom: var(--space-lg);
 }
@@ -292,7 +271,6 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-lg);
 }
 
-/* ─── Badge / Tag ─── */
 .badge {
     display: inline-flex;
     align-items: center;
@@ -305,7 +283,6 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid rgba(108, 99, 255, 0.25);
 }
 
-/* ─── Flash Messages ─── */
 .flash {
     padding: var(--space-md) var(--space-lg);
     border-radius: var(--radius-md);
@@ -321,7 +298,6 @@ h1, h2, h3, h4, h5, h6 {
 .flash-warning { background: rgba(236, 201, 75, 0.15); border: 1px solid var(--warning); color: var(--warning); }
 .flash-danger  { background: rgba(252, 81, 133, 0.15); border: 1px solid var(--danger); color: var(--danger); }
 
-/* ─── Section Styles ─── */
 .section {
     padding: var(--space-4xl) 0;
 }
@@ -340,7 +316,6 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto var(--space-3xl);
 }
 
-/* ─── Animations ─── */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
@@ -375,14 +350,12 @@ h1, h2, h3, h4, h5, h6 {
 .animate-fadeIn   { animation: fadeIn 0.5s ease both; }
 .animate-float    { animation: float 3s ease-in-out infinite; }
 
-/* delay utilities */
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 .delay-4 { animation-delay: 0.4s; }
 .delay-5 { animation-delay: 0.5s; }
 
-/* ─── Navbar ─── */
 .navbar {
     position: fixed;
     top: 0;
@@ -467,7 +440,6 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--space-md);
 }
 
-/* Mobile menu */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -484,7 +456,6 @@ h1, h2, h3, h4, h5, h6 {
     transition: all var(--transition-normal);
 }
 
-/* ─── Hero Section ─── */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -650,7 +621,6 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* ─── Features Section ─── */
 .features {
     background: var(--bg-section);
     position: relative;
@@ -707,7 +677,6 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.7;
 }
 
-/* ─── How It Works ─── */
 .steps-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -758,7 +727,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.85rem;
 }
 
-/* ─── CTA Section ─── */
 .cta-section {
     text-align: center;
     position: relative;
@@ -801,7 +769,6 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
 }
 
-/* ─── Footer ─── */
 .footer {
     background: var(--bg-section);
     border-top: 1px solid var(--border);
@@ -847,7 +814,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.85rem;
 }
 
-/* ─── Responsive ─── */
 @media (max-width: 1024px) {
     .hero-title { font-size: 2.8rem; }
     .features-grid { grid-template-columns: repeat(2, 1fr); }
