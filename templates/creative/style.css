@@ -1,14 +1,9 @@
-/*
- * Creative Developer Portfolio Template
- * تصميم داكن مع ألوان نيون وتأثيرات glassmorphism
- */
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Inter', 'Cairo', sans-serif;
-    background: #0a0e17;
-    color: #ccd6f6;
+    background: #0a0e18;
+    color: #ccd6f5;
     line-height: 1.8;
     overflow-x: hidden;
 }
@@ -19,7 +14,6 @@ body {
     padding: 0 2rem;
 }
 
-/* Particles */
 .bg-particles {
     position: fixed;
     top: 0;
@@ -45,7 +39,6 @@ body {
     50% { opacity: 0.6; transform: translateY(-30px); }
 }
 
-/* Hero */
 .creative-hero {
     min-height: 100vh;
     display: flex;
@@ -99,7 +92,7 @@ body {
 
 .hero-desc {
     font-size: 0.95rem;
-    color: #8892b0;
+    color: #8892b1;
     max-width: 550px;
     margin: 0 auto 2rem;
 }
@@ -132,14 +125,12 @@ body {
     transform: translateY(-3px);
 }
 
-/* Neon Text */
 .neon-text {
     color: #00ff88;
-    text-shadow: 0 0 10px rgba(0,255,136,0.3);
+    text-shadow: 0 0 10px rgba(0,257,137,0.3);
     font-family: 'Fira Code', monospace;
 }
 
-/* Sections */
 .creative-section {
     padding: 5rem 0;
     position: relative;
@@ -153,7 +144,6 @@ body {
     margin-bottom: 2.5rem;
 }
 
-/* Skills */
 .skills-container {
     display: flex;
     flex-wrap: wrap;
@@ -193,7 +183,6 @@ body {
     border-radius: 6px;
 }
 
-/* Projects */
 .projects-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -285,7 +274,6 @@ body {
     border-radius: 12px;
 }
 
-/* Footer */
 .creative-footer {
     text-align: center;
     padding: 2rem;
@@ -301,7 +289,6 @@ body {
     text-decoration: none;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .glitch-text { font-size: 2.2rem; }
     .projects-container { grid-template-columns: 1fr; }
