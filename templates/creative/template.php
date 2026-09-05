@@ -12,10 +12,8 @@
 </head>
 <body>
 
-<!-- Animated Background -->
 <div class="bg-particles" id="particles"></div>
 
-<!-- Hero -->
 <header class="creative-hero">
     <div class="creative-container">
         <div class="terminal-badge">&lt;/&gt; developer</div>
@@ -82,7 +80,7 @@
                     <div class="card-links">
                         <?php if ($project['project_url']): ?>
                             <a href="<?= htmlspecialchars($project['project_url']) ?>" target="_blank" class="neon-btn">
-                                <i class="fas fa-external-link-alt"></i> معاينة
+                                <i class="fas fa-external-link-alt"></i> معاينة الشكل
                             </a>
                         <?php endif; ?>
                         <?php if ($project['github_url']): ?>
@@ -103,21 +101,19 @@
 <section class="creative-section" style="text-align: center;">
     <div class="creative-container">
         <h2 class="section-title"><span class="neon-text">// </span>تواصل</h2>
-        <p style="color: #8892b0; margin-bottom: 2rem;">مهتم بالعمل معي؟ أرسل لي رسالة</p>
+        <p style="color: #8892b0; margin-bottom: 2rem;">مهتم بالعمل معي؟ أرسل لي رسالة الأن</p>
         <a href="mailto:<?= htmlspecialchars($portfolio['email_contact']) ?>" class="neon-btn large">
-            <i class="fas fa-paper-plane"></i> أرسل رسالة
+            <i class="fas fa-paper-plane"></i>   أرسل لي رسالة الأن 
         </a>
     </div>
 </section>
 <?php endif; ?>
 
-<!-- Footer -->
 <footer class="creative-footer">
-    <p>Built with 💚 using <a href="<?= SITE_URL ?>/">AI Portfolio Builder</a></p>
+    <p>Built with 💚 using <a href="<?= SITE_URL ?>/">AI Portfolio Builder By Mohammad Abu Kahreef</a></p>
 </footer>
 
 <script>
-// Simple particle animation
 const canvas = document.getElementById('particles');
 if (canvas) {
     const style = document.createElement('style');
