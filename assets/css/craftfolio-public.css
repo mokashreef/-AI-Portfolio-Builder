@@ -1,0 +1,1835 @@
+/* ==========================================================================
+   AI Portfolio Builder - Public & Canvas Component Stylesheet
+   High-performance, semantic, and genuinely bilingual component architecture.
+   ========================================================================== */
+
+:root {
+    /* English / Latin Typography Design Tokens */
+    --font-latin-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-latin-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-latin-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-latin-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Arabic Dedicated Typography Design Tokens */
+    --font-arabic-display: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-arabic-heading: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-arabic-body: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-arabic-ui: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-arabic-calligraphic: 'Amiri', 'Traditional Arabic', serif;
+
+    /* Active Typography Tokens (dynamically set per locale) */
+    --cf-heading-font: var(--font-latin-heading);
+    --cf-body-font: var(--font-latin-body);
+    --cf-heading-line-height: 1.25;
+    --cf-body-line-height: 1.6;
+    --cf-heading-letter-spacing: -0.02em;
+
+    /* Theme Design Tokens */
+    --cf-primary: #2563eb;
+    --cf-secondary: #3b82f6;
+    --cf-bg: #ffffff;
+    --cf-text: #0f172a;
+    --cf-text-muted: #64748b;
+    --cf-card-bg: rgba(255, 255, 255, 0.05);
+    --cf-card-border: rgba(148, 163, 184, 0.18);
+    --cf-radius: 8px;
+    --cf-transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   FIRST-CLASS ARABIC TYPOGRAPHY & DESIGN SYSTEM RULES
+   Arabic is an independent visual design experience, NOT a simple RTL mirror.
+   ========================================================================== */
+[dir="rtl"], [lang="ar"] {
+    --cf-heading-font: var(--font-arabic-heading);
+    --cf-body-font: var(--font-arabic-body);
+    --cf-heading-line-height: 1.38;
+    --cf-body-line-height: 1.85;
+    --cf-heading-letter-spacing: 0em !important;
+    letter-spacing: 0em !important;
+}
+
+[dir="rtl"] body, [lang="ar"] body {
+    font-family: var(--cf-body-font);
+    line-height: var(--cf-body-line-height);
+    letter-spacing: 0em !important;
+}
+
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4, [lang="ar"] h5, [lang="ar"] h6 {
+    font-family: var(--cf-heading-font);
+    line-height: var(--cf-heading-line-height);
+    letter-spacing: 0em !important;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+[dir="rtl"] p, [dir="rtl"] li, [dir="rtl"] span, [dir="rtl"] a, [dir="rtl"] button, [dir="rtl"] input, [dir="rtl"] textarea,
+[lang="ar"] p, [lang="ar"] li, [lang="ar"] span, [lang="ar"] a, [lang="ar"] button, [lang="ar"] input, [lang="ar"] textarea {
+    letter-spacing: 0em !important;
+}
+
+/* Calligraphic serif templates in Arabic (Al-Khattat, Kinfolk, Scholar, Executive) */
+.cf-theme-calligraphic[dir="rtl"], [dir="rtl"] .cf-arabic-hero h1, [dir="rtl"] .cf-editorial-headline, [dir="rtl"] .cf-executive-hero h1 {
+    font-family: var(--font-arabic-calligraphic), var(--font-arabic-heading);
+    line-height: 1.45;
+}
+
+/* Box sizing and base rules */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--cf-bg);
+    color: var(--cf-text);
+    font-family: var(--cf-body-font);
+    line-height: var(--cf-body-line-height, 1.6);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--cf-heading-font);
+    font-weight: 700;
+    line-height: var(--cf-heading-line-height, 1.25);
+    letter-spacing: var(--cf-heading-letter-spacing, -0.02em);
+    color: inherit;
+}
+
+a {
+    color: var(--cf-primary);
+    text-decoration: none;
+    transition: var(--cf-transition);
+}
+
+a:hover {
+    opacity: 0.88;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Containers */
+.cf-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.cf-container.max-w-4xl { max-width: 900px; }
+.cf-container.max-w-5xl { max-width: 1040px; }
+.cf-container.max-w-6xl { max-width: 1200px; }
+.cf-container.max-w-7xl { max-width: 1360px; }
+
+/* Section Base */
+.cf-section {
+    position: relative;
+    width: 100%;
+}
+
+.cf-section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+.cf-section-title {
+    font-size: 2.25rem;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+.cf-section-subtitle {
+    font-size: 1.1rem;
+    color: var(--cf-text-muted);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons */
+.cf-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--cf-body-font);
+    border-radius: var(--cf-radius);
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: var(--cf-transition);
+}
+.cf-btn-primary {
+    background-color: var(--cf-primary);
+    color: #ffffff !important;
+}
+.cf-btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+.cf-btn-outline {
+    background-color: transparent;
+    color: inherit !important;
+    border-color: currentColor;
+    opacity: 0.85;
+}
+.cf-btn-outline:hover {
+    opacity: 1;
+    background-color: rgba(148, 163, 184, 0.1);
+    transform: translateY(-1px);
+}
+.cf-btn-sm {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+}
+.cf-btn-lg {
+    padding: 14px 28px;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Section: Navbar
+   ========================================================================== */
+.cf-navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.cf-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.cf-logo-img {
+    height: 36px;
+    width: auto;
+    border-radius: var(--cf-radius);
+}
+.cf-brand-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: inherit;
+    letter-spacing: -0.01em;
+}
+.cf-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+.cf-nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--cf-text-muted);
+}
+.cf-nav-link:hover {
+    color: var(--cf-primary);
+}
+
+/* ==========================================================================
+   Section: Hero
+   ========================================================================== */
+.cf-hero-wrap {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+.cf-hero-split {
+    justify-content: space-between;
+}
+.cf-hero-split .cf-hero-content {
+    flex: 1 1 55%;
+}
+.cf-hero-split .cf-hero-media {
+    flex: 1 1 45%;
+    display: flex;
+    justify-content: center;
+}
+.cf-hero-centered {
+    flex-direction: column;
+    text-align: center;
+}
+.cf-hero-centered .cf-hero-actions {
+    justify-content: center;
+}
+
+.cf-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background-color: rgba(148, 163, 184, 0.12);
+    margin-bottom: 20px;
+    border: 1px solid var(--cf-card-border);
+}
+.cf-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10b981;
+    display: inline-block;
+}
+.cf-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    line-height: 1.15;
+}
+.cf-hero-subtitle {
+    font-size: 1.35rem;
+    color: var(--cf-primary);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+.cf-hero-desc {
+    font-size: 1.15rem;
+    color: var(--cf-text-muted);
+    max-width: 600px;
+    margin-bottom: 32px;
+}
+.cf-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.cf-avatar-frame {
+    width: 320px;
+    height: 320px;
+    border-radius: var(--cf-radius);
+    overflow: hidden;
+    border: 3px solid var(--cf-card-border);
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.15);
+}
+.cf-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cf-avatar-placeholder {
+    width: 280px;
+    height: 280px;
+    border-radius: var(--cf-radius);
+    background-color: rgba(148, 163, 184, 0.08);
+    border: 2px dashed var(--cf-card-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--cf-text-muted);
+}
+
+/* ==========================================================================
+   Section: About
+   ========================================================================== */
+.cf-about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: start;
+}
+.cf-about-bio {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--cf-text);
+}
+.cf-about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.cf-highlight-card {
+    padding: 20px 24px;
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: var(--cf-radius);
+}
+.cf-highlight-val {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--cf-primary);
+    font-family: var(--cf-heading-font);
+}
+.cf-highlight-lbl {
+    font-size: 0.9rem;
+    color: var(--cf-text-muted);
+}
+
+/* ==========================================================================
+   Section: Projects
+   ========================================================================== */
+.cf-projects-grid {
+    display: grid;
+    gap: 32px;
+}
+.cf-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cf-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cf-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.cf-project-card {
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: var(--cf-radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--cf-transition);
+}
+.cf-project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cf-primary);
+    box-shadow: 0 16px 32px -8px rgba(0,0,0,0.12);
+}
+.cf-project-img-box {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: rgba(148, 163, 184, 0.05);
+}
+.cf-project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.cf-project-card:hover .cf-project-img {
+    transform: scale(1.04);
+}
+.cf-project-img-placeholder {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--cf-text-muted);
+    background-color: rgba(148, 163, 184, 0.05);
+}
+.cf-project-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.cf-project-name {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+.cf-project-desc {
+    font-size: 0.95rem;
+    color: var(--cf-text-muted);
+    margin-bottom: 16px;
+    flex: 1;
+}
+.cf-tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.cf-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    background-color: rgba(148, 163, 184, 0.1);
+    color: inherit;
+}
+.cf-project-links {
+    display: flex;
+    gap: 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Section: Skills
+   ========================================================================== */
+.cf-skills-wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+.cf-skill-group {
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: var(--cf-radius);
+    padding: 24px;
+}
+.cf-skill-group-title {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: var(--cf-primary);
+}
+.cf-skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.cf-skill-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: var(--cf-radius);
+    background-color: rgba(148, 163, 184, 0.08);
+    border: 1px solid var(--cf-card-border);
+}
+.cf-skill-pill i {
+    color: var(--cf-primary);
+    font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   Section: Experience & Timeline
+   ========================================================================== */
+.cf-timeline-wrap {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 28px;
+    border-left: 2px solid var(--cf-card-border);
+}
+[dir="rtl"] .cf-timeline-wrap {
+    padding-left: 0;
+    padding-right: 28px;
+    border-left: none;
+    border-right: 2px solid var(--cf-card-border);
+}
+.cf-timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+.cf-timeline-item:last-child {
+    margin-bottom: 0;
+}
+.cf-timeline-dot {
+    position: absolute;
+    top: 4px;
+    left: -35px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--cf-primary);
+    border: 2px solid var(--cf-bg);
+}
+[dir="rtl"] .cf-timeline-dot {
+    left: auto;
+    right: -35px;
+}
+.cf-timeline-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+.cf-timeline-role {
+    font-size: 1.15rem;
+}
+.cf-timeline-comp {
+    color: var(--cf-primary);
+    font-weight: 600;
+}
+.cf-timeline-date {
+    font-size: 0.85rem;
+    color: var(--cf-text-muted);
+}
+.cf-timeline-desc {
+    color: var(--cf-text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Section: Education & Cards Grid
+   ========================================================================== */
+.cf-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+.cf-edu-card {
+    padding: 24px;
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: var(--cf-radius);
+}
+.cf-edu-icon {
+    font-size: 1.5rem;
+    color: var(--cf-primary);
+    margin-bottom: 12px;
+}
+.cf-edu-degree {
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+}
+.cf-edu-inst {
+    font-size: 0.9rem;
+    color: var(--cf-text-muted);
+    margin-bottom: 12px;
+}
+.cf-edu-desc {
+    font-size: 0.9rem;
+    color: var(--cf-text-muted);
+}
+
+/* ==========================================================================
+   Section: Services
+   ========================================================================== */
+.cf-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+}
+.cf-service-card {
+    padding: 32px;
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: var(--cf-radius);
+    transition: var(--cf-transition);
+}
+.cf-service-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cf-primary);
+}
+.cf-service-icon {
+    font-size: 2rem;
+    color: var(--cf-primary);
+    margin-bottom: 16px;
+}
+.cf-service-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+.cf-service-desc {
+    font-size: 0.95rem;
+    color: var(--cf-text-muted);
+}
+
+/* ==========================================================================
+   Section: Testimonials
+   ========================================================================== */
+.cf-testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+}
+.cf-testimonial-card {
+    padding: 32px;
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: var(--cf-radius);
+    display: flex;
+    flex-direction: column;
+}
+.cf-quote-icon {
+    font-size: 1.75rem;
+    color: var(--cf-primary);
+    opacity: 0.4;
+    margin-bottom: 16px;
+}
+.cf-testimonial-text {
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    flex: 1;
+}
+.cf-author-name {
+    font-weight: 700;
+}
+.cf-author-role {
+    font-size: 0.85rem;
+    color: var(--cf-text-muted);
+}
+
+/* ==========================================================================
+   Section: Stats
+   ========================================================================== */
+.cf-stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    text-align: center;
+}
+.cf-stat-box {
+    padding: 24px;
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: var(--cf-radius);
+}
+.cf-stat-val {
+    font-size: 2.75rem;
+    font-weight: 800;
+    font-family: var(--cf-heading-font);
+    color: var(--cf-primary);
+    line-height: 1.1;
+    margin-bottom: 6px;
+}
+.cf-stat-lbl {
+    font-size: 0.95rem;
+    color: var(--cf-text-muted);
+}
+
+/* ==========================================================================
+   Section: Gallery
+   ========================================================================== */
+.cf-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+.cf-gallery-item {
+    position: relative;
+    border-radius: var(--cf-radius);
+    overflow: hidden;
+    background-color: rgba(148, 163, 184, 0.05);
+    border: 1px solid var(--cf-card-border);
+    aspect-ratio: 16/10;
+}
+.cf-gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.cf-gallery-item:hover .cf-gallery-img {
+    transform: scale(1.05);
+}
+.cf-gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--cf-text-muted);
+}
+.cf-gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: #ffffff;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Section: FAQ
+   ========================================================================== */
+.cf-faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.cf-faq-item {
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: var(--cf-radius);
+    padding: 18px 24px;
+}
+.cf-faq-question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cf-faq-question::-webkit-details-marker {
+    display: none;
+}
+.cf-faq-answer {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    color: var(--cf-text-muted);
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   Section: CTA
+   ========================================================================== */
+.cf-cta-card {
+    text-align: center;
+    padding: 56px 32px;
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: var(--cf-radius);
+    max-width: 800px;
+    margin: 0 auto;
+}
+.cf-cta-title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+.cf-cta-sub {
+    font-size: 1.1rem;
+    color: var(--cf-text-muted);
+    margin-bottom: 28px;
+}
+
+/* ==========================================================================
+   Section: Contact
+   ========================================================================== */
+.cf-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+}
+.cf-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.cf-contact-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.05rem;
+}
+.cf-contact-meta-row i {
+    width: 24px;
+    color: var(--cf-primary);
+    font-size: 1.2rem;
+}
+.cf-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.cf-input, .cf-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    border-radius: var(--cf-radius);
+    border: 1px solid var(--cf-card-border);
+    background-color: var(--cf-card-bg);
+    color: inherit;
+    outline: none;
+    transition: var(--cf-transition);
+}
+.cf-input:focus, .cf-textarea:focus {
+    border-color: var(--cf-primary);
+}
+
+/* ==========================================================================
+   Section: Social Links
+   ========================================================================== */
+.cf-social-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+.cf-social-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background-color: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    color: inherit;
+}
+.cf-social-pill:hover {
+    border-color: var(--cf-primary);
+    color: var(--cf-primary);
+}
+
+/* ==========================================================================
+   Section: Footer & Ownership Attribution (Req 24 & 25)
+   ========================================================================== */
+.cf-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid var(--cf-card-border);
+    padding-top: 24px;
+}
+.cf-footer-copy {
+    font-size: 0.9rem;
+    color: var(--cf-text-muted);
+}
+.cf-attribution-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--cf-text-muted);
+    background-color: rgba(148, 163, 184, 0.08);
+    border: 1px solid var(--cf-card-border);
+    border-radius: 9999px;
+    transition: var(--cf-transition);
+}
+.cf-attribution-badge:hover {
+    color: var(--cf-primary);
+    border-color: var(--cf-primary);
+}
+.cf-badge-bolt {
+    color: var(--cf-primary);
+    font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   Editor In-Canvas Toolbar & Outlines
+   ========================================================================== */
+.cf-section.is-selected {
+    outline: 2px solid var(--cf-primary) !important;
+    outline-offset: -2px;
+}
+.cf-section-toolbar {
+    display: none;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    z-index: 50;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 4px 8px;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.cf-section:hover .cf-section-toolbar,
+.cf-section.is-selected .cf-section-toolbar {
+    display: flex;
+}
+.cf-toolbar-badge {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.cf-toolbar-actions {
+    display: flex;
+    gap: 4px;
+}
+.cf-toolbar-actions button {
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.cf-toolbar-actions button:hover {
+    background: #1e293b;
+    color: #38bdf8;
+}
+.cf-toolbar-actions .cf-btn-delete:hover {
+    color: #f87171;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+    .cf-hero-wrap {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cf-hero-actions {
+        justify-content: center;
+    }
+    .cf-about-grid {
+        grid-template-columns: 1fr;
+    }
+    .cf-cols-3, .cf-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .cf-contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 640px) {
+    .cf-cols-2, .cf-cols-3, .cf-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    .cf-hero-title {
+        font-size: 2.25rem;
+    }
+    .cf-avatar-frame {
+        width: 220px;
+        height: 220px;
+    }
+    .cf-nav-links {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   ADVANCED TEMPLATE ART DIRECTION & VARIANT DESIGN SYSTEMS
+   ========================================================================== */
+
+/* 1. TERMINAL & DEVELOPER CLI SYSTEM */
+.cf-terminal-window {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    font-family: 'Fira Code', monospace;
+    overflow: hidden;
+    text-align: left;
+}
+[dir="rtl"] .cf-terminal-window {
+    direction: ltr; /* Terminal stays monospace LTR for commands with RTL descriptions below */
+}
+.cf-terminal-header {
+    background: #161b22;
+    padding: 10px 16px;
+    border-bottom: 1px solid #30363d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cf-terminal-dots {
+    display: flex;
+    gap: 8px;
+}
+.cf-terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.cf-terminal-dot.red { background: #ff5f56; }
+.cf-terminal-dot.yellow { background: #ffbd2e; }
+.cf-terminal-dot.green { background: #27c93f; }
+.cf-terminal-title {
+    font-size: 0.8rem;
+    color: #8b949e;
+    font-weight: 500;
+}
+.cf-terminal-body {
+    padding: 24px;
+    color: #c9d1d9;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+.cf-terminal-prompt {
+    color: #58a6ff;
+    margin-bottom: 6px;
+}
+.cf-terminal-prompt span.cf-term-green { color: #3fb950; }
+.cf-terminal-prompt span.cf-term-purple { color: #bc8cff; }
+.cf-terminal-code-block {
+    background: rgba(13, 17, 23, 0.6);
+    border: 1px solid rgba(48, 54, 61, 0.6);
+    border-radius: 6px;
+    padding: 16px;
+    margin: 14px 0;
+}
+.cf-terminal-repo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+.cf-terminal-repo-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 20px;
+    transition: var(--cf-transition);
+    font-family: 'Fira Code', monospace;
+}
+.cf-terminal-repo-card:hover {
+    border-color: #58a6ff;
+    transform: translateY(-2px);
+}
+
+/* 2. SWISS INTERNATIONAL GRID SYSTEM */
+.cf-swiss-wrap {
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    padding: 60px 0;
+}
+.cf-swiss-index {
+    font-family: 'Space Grotesk', monospace, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cf-primary, #ea580c);
+    margin-bottom: 12px;
+}
+.cf-swiss-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+.cf-swiss-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    padding-top: 24px;
+}
+.cf-swiss-table-row {
+    display: grid;
+    grid-template-columns: 80px 2fr 1fr 100px;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    font-size: 0.95rem;
+    transition: var(--cf-transition);
+}
+.cf-swiss-table-row:hover {
+    padding-left: 12px;
+    background: rgba(0, 0, 0, 0.02);
+}
+[dir="rtl"] .cf-swiss-table-row:hover {
+    padding-left: 0;
+    padding-right: 12px;
+}
+
+/* 3. KINFOLK & EDITORIAL MAGAZINE SYSTEM */
+.cf-editorial-hero {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+}
+.cf-editorial-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cf-text-muted);
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 16px;
+}
+.cf-editorial-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    font-style: italic;
+}
+.cf-editorial-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--cf-text);
+    border-left: 3px solid var(--cf-primary);
+    padding-left: 24px;
+    margin: 40px 0;
+}
+[dir="rtl"] .cf-editorial-quote {
+    border-left: none;
+    border-right: 3px solid var(--cf-primary);
+    padding-left: 0;
+    padding-right: 24px;
+}
+.cf-editorial-case-study {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 60px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.cf-editorial-case-study:nth-child(even) {
+    direction: rtl;
+}
+[dir="rtl"] .cf-editorial-case-study:nth-child(even) {
+    direction: ltr;
+}
+.cf-editorial-case-study:nth-child(even) > * {
+    direction: ltr;
+}
+[dir="rtl"] .cf-editorial-case-study:nth-child(even) > * {
+    direction: rtl;
+}
+
+/* 4. MODERN BENTO GRID SYSTEM */
+.cf-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+    gap: 20px;
+    margin: 32px 0;
+}
+.cf-bento-cell {
+    background: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--cf-transition);
+}
+.cf-bento-cell:hover {
+    transform: translateY(-3px);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.3);
+}
+.cf-bento-cell.span-2 { grid-column: span 2; }
+.cf-bento-cell.span-3 { grid-column: span 3; }
+.cf-bento-cell.row-2 { grid-row: span 2; }
+.cf-bento-pulse {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    color: #10b981;
+    font-weight: 600;
+}
+.cf-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: cfPulse 2s infinite;
+}
+@keyframes cfPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* 5. NEO-BRUTALIST SYSTEM */
+.cf-brutalist-card {
+    background: #ffffff;
+    color: #000000;
+    border: 3px solid #000000;
+    border-radius: 0px;
+    box-shadow: 5px 5px 0 #000000;
+    padding: 28px;
+    transition: all 0.15s ease-in-out;
+}
+.cf-brutalist-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 #000000;
+}
+.cf-brutalist-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cf-primary, #2563eb);
+    color: #ffffff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 12px 24px;
+    border: 3px solid #000000;
+    box-shadow: 4px 4px 0 #000000;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+.cf-brutalist-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #000000;
+    opacity: 1;
+}
+.cf-brutalist-badge {
+    display: inline-block;
+    background: #fef08a;
+    color: #000000;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 0 #000000;
+    margin-bottom: 12px;
+}
+
+/* 6. ARABIC CALLIGRAPHIC / FIRST-CLASS ARABIC SYSTEM */
+.cf-arabic-hero {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    text-align: right;
+    padding: 60px 0;
+}
+[dir="ltr"] .cf-arabic-hero {
+    text-align: left;
+}
+.cf-arabic-callout {
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%);
+    border-right: 4px solid #f59e0b;
+    padding: 24px;
+    border-radius: 8px 0 0 8px;
+    margin: 24px 0;
+}
+[dir="ltr"] .cf-arabic-callout {
+    border-right: none;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 8px 8px 0;
+}
+
+/* 7. ACADEMIC & RESEARCH SCHOLAR SYSTEM */
+.cf-academic-paper-row {
+    background: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    transition: var(--cf-transition);
+}
+.cf-academic-paper-row:hover {
+    border-color: var(--cf-primary);
+    background: rgba(255, 255, 255, 0.03);
+}
+.cf-academic-meta {
+    font-size: 0.85rem;
+    color: var(--cf-text-muted);
+    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* 8. EXECUTIVE & ADVISORY SYSTEM */
+.cf-executive-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+}
+.cf-executive-metric-card {
+    border-top: 2px solid var(--cf-primary);
+    padding-top: 16px;
+}
+.cf-executive-metric-val {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--cf-text);
+    margin-bottom: 6px;
+}
+
+/* Responsive Overrides for Variants */
+@media (max-width: 900px) {
+    .cf-bento-grid {
+        grid-template-columns: 1fr;
+    }
+    .cf-bento-cell.span-2, .cf-bento-cell.span-3 {
+        grid-column: span 1;
+    }
+    .cf-swiss-grid {
+        grid-template-columns: 1fr;
+    }
+    .cf-editorial-case-study {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .cf-swiss-table-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
+/* ==========================================================================
+   ADDITIONAL HIGH-FIDELITY TEMPLATE DESIGN SYSTEMS
+   ========================================================================== */
+
+/* 9. DEVELOPER DOCUMENTATION STYLE (.cf-docs-*) */
+.cf-docs-hero {
+    border-bottom: 1px solid var(--cf-card-border);
+    padding-bottom: 48px;
+}
+.cf-docs-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.28);
+    color: #38bdf8;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: 'Fira Code', monospace;
+    margin-bottom: 16px;
+}
+.cf-docs-code-card {
+    background: #0b1120;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 18px 22px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.88rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    margin: 24px 0;
+    overflow-x: auto;
+    text-align: left;
+    direction: ltr;
+}
+.cf-docs-code-card .token-kw { color: #f43f5e; }
+.cf-docs-code-card .token-fn { color: #38bdf8; }
+.cf-docs-code-card .token-str { color: #10b981; }
+.cf-docs-code-card .token-cm { color: #64748b; }
+
+.cf-docs-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+.cf-docs-spec-card {
+    background: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: 8px;
+    padding: 24px;
+    transition: var(--cf-transition);
+}
+.cf-docs-spec-card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+}
+.cf-docs-method-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Fira Code', monospace;
+    margin-bottom: 10px;
+}
+.cf-docs-method-get { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.cf-docs-method-grpc { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+.cf-docs-method-raft { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+/* 10. MINIMALIST CODE ARTISAN (.cf-minimal-*) */
+.cf-minimal-wrap {
+    padding: 48px 0;
+}
+.cf-minimal-lead {
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    max-width: 840px;
+}
+.cf-minimal-lead strong {
+    font-weight: 700;
+}
+.cf-minimal-list-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+    transition: var(--cf-transition);
+}
+.cf-minimal-list-item:hover {
+    padding-inline-start: 12px;
+    background: rgba(255, 255, 255, 0.02);
+}
+.cf-minimal-meta {
+    font-size: 0.85rem;
+    color: var(--cf-text-muted);
+    font-family: 'Fira Code', monospace;
+}
+
+/* 11. VISUAL GALLERY & CINE PHOTOGRAPHY (.cf-gallery-*) */
+.cf-gallery-hero-bg {
+    position: relative;
+    padding: 90px 24px 60px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 20%, rgba(30, 41, 59, 0.7) 0%, rgba(9, 13, 22, 1) 100%);
+}
+.cf-gallery-lens-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+.cf-gallery-masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+}
+.cf-gallery-card {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--cf-transition);
+}
+.cf-gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.cf-gallery-img-box {
+    position: relative;
+    overflow: hidden;
+    height: 280px;
+}
+.cf-gallery-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.cf-gallery-card:hover .cf-gallery-img-box img {
+    transform: scale(1.05);
+}
+.cf-gallery-exif {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-family: 'Fira Code', monospace;
+    color: #94a3b8;
+    padding: 14px 18px;
+    background: #090d16;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 12. 3D & MOTION DIRECTOR (.cf-motion-*) */
+.cf-motion-hero {
+    text-align: center;
+    padding: 80px 20px 50px;
+    background: radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+}
+.cf-motion-reel-card {
+    background: #0d1117;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    transition: var(--cf-transition);
+}
+.cf-motion-reel-card:hover {
+    border-color: #a855f7;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+    transform: translateY(-3px);
+}
+
+/* 13. STRATEGIC CONSULTANT & ADVISORY (.cf-consultant-*) */
+.cf-consultant-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 36px 0;
+}
+.cf-consultant-kpi-card {
+    background: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-top: 3px solid var(--cf-primary);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+}
+.cf-consultant-kpi-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--cf-primary);
+    line-height: 1.1;
+    margin-bottom: 6px;
+}
+.cf-consultant-kpi-lbl {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--cf-text-muted);
+}
+
+/* 14. FREELANCE PACKAGES & PRICING (.cf-pricing-*) */
+.cf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 36px 0;
+}
+.cf-pricing-card {
+    background: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: 12px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--cf-transition);
+    position: relative;
+}
+.cf-pricing-card.featured {
+    border-color: var(--cf-primary);
+    box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.3);
+}
+.cf-pricing-badge {
+    position: absolute;
+    top: -12px;
+    inset-inline-end: 20px;
+    background: var(--cf-primary);
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.cf-pricing-cost {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin: 16px 0 8px;
+}
+.cf-pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 28px;
+}
+.cf-pricing-features li {
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: var(--cf-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.cf-pricing-features li i {
+    color: #10b981;
+    font-size: 0.85rem;
+}
+
+/* 15. NORDIC ARCHITECTURAL & SPATIAL (.cf-nordic-*) */
+.cf-nordic-hero {
+    padding: 80px 0 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+[dir="dark"] .cf-nordic-hero, body[style*="#1c1917"] .cf-nordic-hero {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.cf-nordic-tag {
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cf-primary);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+.cf-nordic-title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+.cf-nordic-title strong {
+    font-weight: 700;
+}
+.cf-nordic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 36px;
+    margin: 36px 0;
+}
+.cf-nordic-card {
+    transition: var(--cf-transition);
+}
+.cf-nordic-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border-radius: 2px;
+}
+.cf-nordic-card-meta {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cf-text-muted);
+    margin-bottom: 6px;
+}
+
+/* 16. TIMELINE & EXPERIENCE (.cf-timeline-*) */
+.cf-timeline-wrap {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding-inline-start: 32px;
+}
+.cf-timeline-wrap::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 10px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--cf-card-border);
+}
+.cf-timeline-item {
+    position: relative;
+    margin-bottom: 36px;
+}
+.cf-timeline-item:last-child {
+    margin-bottom: 0;
+}
+.cf-timeline-item::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: -28px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--cf-primary);
+    border: 2px solid var(--cf-bg);
+}
+.cf-timeline-role {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cf-text);
+}
+.cf-timeline-company {
+    font-size: 0.95rem;
+    color: var(--cf-primary);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.cf-timeline-period {
+    font-size: 0.8rem;
+    color: var(--cf-text-muted);
+    font-family: 'Fira Code', monospace;
+    margin-bottom: 10px;
+}
+.cf-timeline-desc {
+    color: var(--cf-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* 17. BENTO PROJECTS GRID (.cf-bento-projects-*) */
+.cf-bento-projects-wrap {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    margin: 32px 0;
+}
+@media (max-width: 860px) {
+    .cf-bento-projects-wrap {
+        grid-template-columns: 1fr;
+    }
+}
+.cf-bento-proj-featured {
+    background: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--cf-transition);
+}
+.cf-bento-proj-featured:hover {
+    border-color: var(--cf-primary);
+    transform: translateY(-2px);
+}
+.cf-bento-proj-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.cf-bento-proj-mini {
+    background: var(--cf-card-bg);
+    border: 1px solid var(--cf-card-border);
+    border-radius: 14px;
+    padding: 24px;
+    transition: var(--cf-transition);
+}
+.cf-bento-proj-mini:hover {
+    border-color: var(--cf-primary);
+    transform: translateY(-2px);
+}
+
+/* RTL Specific Fine-tuning & Code Isolation */
+[dir="rtl"] .cf-docs-code-card,
+[dir="rtl"] .cf-terminal-window,
+[dir="rtl"] .cf-terminal-body,
+[dir="rtl"] pre,
+[dir="rtl"] code {
+    direction: ltr !important;
+    text-align: left !important;
+    unicode-bidi: isolate;
+}
+
+[dir="rtl"] .cf-terminal-header {
+    direction: ltr; /* keep terminal control dots in canonical order */
+}
+
+/* Floating / Header Bilingual Switcher (.cf-bilingual-switcher) */
+.cf-bilingual-switcher {
+    position: fixed;
+    bottom: 24px;
+    inset-inline-end: 24px;
+    z-index: 999;
+    background: rgba(17, 24, 39, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    padding: 6px 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+.cf-bilingual-switcher a {
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+}
+.cf-bilingual-switcher a:hover {
+    color: #fff;
+}
+.cf-bilingual-switcher a.active {
+    background: var(--cf-primary, #2563eb);
+    color: #ffffff;
+}
+.cf-bilingual-sep {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.75rem;
+}
+
+
+

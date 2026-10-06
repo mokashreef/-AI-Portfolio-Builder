@@ -1,0 +1,65 @@
+# Options
+Options -Indexes
+Options -MultiViews
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Block access to sensitive directories
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Deny access to internal / sensitive directories
+    RewriteRule ^(app|config|storage|sql|tests|scripts|\.git)(/.*)?$ - [F,L]
+
+    # Prevent access to dot files, databases, configuration, and environment files
+    <FilesMatch "^\.|\.(htaccess|htpasswd|ini|log|sh|inc|bak|env|sql|sqlite|sqlite3|db)$">
+        <IfModule mod_authz_core.c>
+            Require all denied
+        </IfModule>
+        <IfModule !mod_authz_core.c>
+            Order Allow,Deny
+            Deny from all
+        </IfModule>
+    </FilesMatch>
+
+    # If the file or directory exists physically, serve it directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # If physical .php file exists (e.g. /api/assets), execute it
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.*)$ $1.php [L,QSA]
+
+    # Clean system routes
+    RewriteRule ^dashboard/?$ dashboard.php [L,QSA]
+    RewriteRule ^templates/?$ templates.php [L,QSA]
+    RewriteRule ^editor/([0-9]+)/?$ editor.php?id=$1 [L,QSA]
+    RewriteRule ^editor/?$ editor.php [L,QSA]
+    RewriteRule ^login/?$ login.php [L,QSA]
+    RewriteRule ^register/?$ register.php [L,QSA]
+    RewriteRule ^logout/?$ logout.php [L,QSA]
+    RewriteRule ^admin/?$ admin.php [L,QSA]
+    RewriteRule ^stats/([0-9]+)/?$ stats.php?id=$1 [L,QSA]
+    RewriteRule ^stats/?$ stats.php [L,QSA]
+    RewriteRule ^migrate/?$ migrate.php [L,QSA]
+    RewriteRule ^forgot-password/?$ forgot-password.php [L,QSA]
+    RewriteRule ^reset-password/?$ reset-password.php [L,QSA]
+
+    # User multi-page routes: /{slug}/{page_slug}
+    RewriteRule ^([a-zA-Z0-9_\-]+)/([a-zA-Z0-9_\-]+)/?$ portfolio.php?slug=$1&page=$2 [L,QSA]
+
+    # User main portfolio route: /{slug}
+    RewriteRule ^([a-zA-Z0-9_\-]+)/?$ portfolio.php?slug=$1 [L,QSA]
+</IfModule>
+
+# Custom Error Pages
+ErrorDocument 404 /404.php
+ErrorDocument 403 /403.php
+ErrorDocument 500 /500.php
